@@ -3,13 +3,13 @@ import {
   findTeammateTaskByAgentId,
   requestTeammateShutdown,
 } from '../../../tasks/InProcessTeammateTask/InProcessTeammateTask.js'
-import { parseAgentId } from '../../../utils/agentId.js'
-import { logForDebugging } from '../../../utils/debug.js'
-import { jsonStringify } from '../../../utils/slowOperations.js'
+import { parseAgentId } from '../../agentId.js'
+import { logForDebugging } from '../../debug.js'
+import { jsonStringify } from '../../slowOperations.js'
 import {
   createShutdownRequestMessage,
   writeToMailbox,
-} from '../../../utils/teammateMailbox.js'
+} from '../../teammateMailbox.js'
 import { startInProcessTeammate } from '../inProcessRunner.js'
 import {
   killInProcessTeammate,

@@ -79,7 +79,9 @@ export async function addFileGlobRuleToGitignore(
 
     // Add the entry to the global gitignore
     try {
-      const content = await readFile(globalGitignorePath, { encoding: 'utf-8' })
+      const content = await readFile(globalGitignorePath, {
+        encoding: 'utf-8',
+      })
       if (content.includes(gitignoreEntry)) {
         return // Pattern already exists, don't add again
       }

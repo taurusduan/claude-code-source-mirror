@@ -28,7 +28,9 @@ export function registerEscHotkey(onEscape: () => void): boolean {
   if (!cu.hotkey.registerEscape(onEscape)) {
     // CGEvent.tapCreate failed — typically missing Accessibility permission.
     // CU still works, just without ESC abort. Mirrors Cowork's escAbort.ts:81.
-    logForDebugging('[cu-esc] registerEscape returned false', { level: 'warn' })
+    logForDebugging('[cu-esc] registerEscape returned false', {
+      level: 'warn',
+    })
     return false
   }
   retainPump()

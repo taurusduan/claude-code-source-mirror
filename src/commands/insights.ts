@@ -122,7 +122,9 @@ const collectFromRemoteHost: (
           const projectsDir = join(tempDir, 'projects')
           let projectDirents: Awaited<ReturnType<typeof readdir>>
           try {
-            projectDirents = await readdir(projectsDir, { withFileTypes: true })
+            projectDirents = await readdir(projectsDir, {
+              withFileTypes: true,
+            })
           } catch {
             return result
           }

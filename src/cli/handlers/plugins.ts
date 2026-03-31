@@ -163,9 +163,8 @@ export async function pluginListHandler(options: {
   logEvent('tengu_plugin_list_command', {})
 
   const installedData = loadInstalledPluginsV2()
-  const { getPluginEditableScopes } = await import(
-    '../../utils/plugins/pluginStartupCheck.js'
-  )
+  const { getPluginEditableScopes } =
+    await import('../../utils/plugins/pluginStartupCheck.js')
   const enabledPlugins = getPluginEditableScopes()
 
   const pluginIds = Object.keys(installedData.plugins)

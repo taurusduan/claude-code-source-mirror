@@ -632,9 +632,8 @@ export const SkillTool: Tool<InputSchema, Output, Progress> = buildTool({
     }
 
     // Process the skill with optional args
-    const { processPromptSlashCommand } = await import(
-      'src/utils/processUserInput/processSlashCommand.js'
-    )
+    const { processPromptSlashCommand } =
+      await import('src/utils/processUserInput/processSlashCommand.js')
     const processedCommand = await processPromptSlashCommand(
       commandName,
       args || '', // Pass args if provided

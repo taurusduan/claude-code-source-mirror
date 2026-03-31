@@ -116,7 +116,13 @@ export async function reconcileMarketplaces(
 ): Promise<ReconcileResult> {
   const declared = getDeclaredMarketplaces()
   if (Object.keys(declared).length === 0) {
-    return { installed: [], updated: [], failed: [], upToDate: [], skipped: [] }
+    return {
+      installed: [],
+      updated: [],
+      failed: [],
+      upToDate: [],
+      skipped: [],
+    }
   }
 
   let materialized: KnownMarketplacesFile

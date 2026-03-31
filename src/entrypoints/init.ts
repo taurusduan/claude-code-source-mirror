@@ -166,12 +166,10 @@ export const init = memoize(async (): Promise<void> => {
     // inject proxy vars without a static import of the upstreamproxy module.
     if (isEnvTruthy(process.env.CLAUDE_CODE_REMOTE)) {
       try {
-        const { initUpstreamProxy, getUpstreamProxyEnv } = await import(
-          '../upstreamproxy/upstreamproxy.js'
-        )
-        const { registerUpstreamProxyEnvFn } = await import(
-          '../utils/subprocessEnv.js'
-        )
+        const { initUpstreamProxy, getUpstreamProxyEnv } =
+          await import('../upstreamproxy/upstreamproxy.js')
+        const { registerUpstreamProxyEnvFn } =
+          await import('../utils/subprocessEnv.js')
         registerUpstreamProxyEnvFn(getUpstreamProxyEnv)
         await initUpstreamProxy()
       } catch (err) {
@@ -193,9 +191,8 @@ export const init = memoize(async (): Promise<void> => {
     // for all teams created this session. Lazy import: swarm code is
     // behind feature gate and most sessions never create teams.
     registerCleanup(async () => {
-      const { cleanupSessionTeams } = await import(
-        '../utils/swarm/teamHelpers.js'
-      )
+      const { cleanupSessionTeams } =
+        await import('../utils/swarm/teamHelpers.js')
       await cleanupSessionTeams()
     })
 
@@ -304,9 +301,8 @@ async function doInitializeTelemetry(): Promise<void> {
 
 async function setMeterState(): Promise<void> {
   // Lazy-load instrumentation to defer ~400KB of OpenTelemetry + protobuf
-  const { initializeTelemetry } = await import(
-    '../utils/telemetry/instrumentation.js'
-  )
+  const { initializeTelemetry } =
+    await import('../utils/telemetry/instrumentation.js')
   // Initialize customer OTLP telemetry (metrics, logs, traces)
   const meter = await initializeTelemetry()
   if (meter) {

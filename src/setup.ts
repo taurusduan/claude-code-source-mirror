@@ -103,9 +103,8 @@ export async function setup(
 
   // Teammate snapshot — SIMPLE-only gate (no escape hatch, swarm not used in bare)
   if (!isBareMode() && isAgentSwarmsEnabled()) {
-    const { captureTeammateModeSnapshot } = await import(
-      './utils/swarm/backends/teammateModeSnapshot.js'
-    )
+    const { captureTeammateModeSnapshot } =
+      await import('./utils/swarm/backends/teammateModeSnapshot.js')
     captureTeammateModeSnapshot()
   }
 
@@ -340,9 +339,8 @@ export async function setup(
       // the prompt cache so the next turn picks up the OFF state.
       void import('./utils/commitAttribution.js').then(async m => {
         if (await m.isInternalModelRepo()) {
-          const { clearSystemPromptSections } = await import(
-            './constants/systemPromptSections.js'
-          )
+          const { clearSystemPromptSections } =
+            await import('./constants/systemPromptSections.js')
           clearSystemPromptSections()
         }
       })

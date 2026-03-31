@@ -830,7 +830,10 @@ export async function unassignTeammateTasks(
 
   // Unassign each task and reset status to open
   for (const task of unresolvedAssignedTasks) {
-    await updateTask(teamName, task.id, { owner: undefined, status: 'pending' })
+    await updateTask(teamName, task.id, {
+      owner: undefined,
+      status: 'pending',
+    })
   }
 
   if (unresolvedAssignedTasks.length > 0) {

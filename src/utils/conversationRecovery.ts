@@ -562,7 +562,9 @@ export async function loadConversationForResume(
     messages = deserialized.messages
 
     // Process session start hooks for resume
-    const hookMessages = await processSessionStartHooks('resume', { sessionId })
+    const hookMessages = await processSessionStartHooks('resume', {
+      sessionId,
+    })
 
     // Append hook messages to the conversation
     messages.push(...hookMessages)

@@ -701,9 +701,9 @@ function renderNodeToOutput(
             yogaNode.getComputedPadding(LayoutEdge.Bottom),
         )
 
-        const content = node.childNodes.find(c => (c as DOMElement).yogaNode) as
-          | DOMElement
-          | undefined
+        const content = node.childNodes.find(
+          c => (c as DOMElement).yogaNode,
+        ) as DOMElement | undefined
         const contentYoga = content?.yogaNode
         // scrollHeight is the intrinsic height of the content wrapper.
         // Do NOT add getComputedTop() — that's the wrapper's offset

@@ -1,11 +1,11 @@
 import { getSessionId } from '../../../bootstrap/state.js'
 import type { ToolUseContext } from '../../../Tool.js'
-import { formatAgentId, parseAgentId } from '../../../utils/agentId.js'
-import { quote } from '../../../utils/bash/shellQuote.js'
-import { registerCleanup } from '../../../utils/cleanupRegistry.js'
-import { logForDebugging } from '../../../utils/debug.js'
-import { jsonStringify } from '../../../utils/slowOperations.js'
-import { writeToMailbox } from '../../../utils/teammateMailbox.js'
+import { formatAgentId, parseAgentId } from '../../agentId.js'
+import { quote } from '../../bash/shellQuote.js'
+import { registerCleanup } from '../../cleanupRegistry.js'
+import { logForDebugging } from '../../debug.js'
+import { jsonStringify } from '../../slowOperations.js'
+import { writeToMailbox } from '../../teammateMailbox.js'
 import {
   buildInheritedCliFlags,
   buildInheritedEnvVars,

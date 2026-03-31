@@ -234,7 +234,10 @@ export function getAnthropicApiKeyWithSource(
   // lists. 3P (Bedrock/Vertex/Foundry) uses provider creds, not this path.
   if (isBareMode()) {
     if (process.env.ANTHROPIC_API_KEY) {
-      return { key: process.env.ANTHROPIC_API_KEY, source: 'ANTHROPIC_API_KEY' }
+      return {
+        key: process.env.ANTHROPIC_API_KEY,
+        source: 'ANTHROPIC_API_KEY',
+      }
     }
     if (getConfiguredApiKeyHelper()) {
       return {

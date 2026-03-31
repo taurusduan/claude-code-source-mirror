@@ -55,9 +55,8 @@ export const call: LocalCommandCall = async () => {
   }
 
   // Toggle ON — run pre-flight checks first
-  const { isVoiceStreamAvailable } = await import(
-    '../../services/voiceStreamSTT.js'
-  )
+  const { isVoiceStreamAvailable } =
+    await import('../../services/voiceStreamSTT.js')
   const { checkRecordingAvailability } = await import('../../services/voice.js')
 
   // Check recording availability (microphone access)
@@ -80,9 +79,8 @@ export const call: LocalCommandCall = async () => {
   }
 
   // Check for recording tools
-  const { checkVoiceDependencies, requestMicrophonePermission } = await import(
-    '../../services/voice.js'
-  )
+  const { checkVoiceDependencies, requestMicrophonePermission } =
+    await import('../../services/voice.js')
   const deps = await checkVoiceDependencies()
   if (!deps.available) {
     const hint = deps.installCommand
@@ -112,7 +110,9 @@ export const call: LocalCommandCall = async () => {
   }
 
   // All checks passed — enable voice
-  const result = updateSettingsForSource('userSettings', { voiceEnabled: true })
+  const result = updateSettingsForSource('userSettings', {
+    voiceEnabled: true,
+  })
   if (result.error) {
     return {
       type: 'text' as const,

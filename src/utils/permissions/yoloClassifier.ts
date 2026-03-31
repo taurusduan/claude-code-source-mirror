@@ -1199,7 +1199,9 @@ export async function classifyYoloAction(
       logForDebugging('Auto mode classifier: No tool use block found', {
         level: 'warn',
       })
-      logAutoModeOutcome('parse_failure', model, { failureKind: 'no_tool_use' })
+      logAutoModeOutcome('parse_failure', model, {
+        failureKind: 'no_tool_use',
+      })
       return {
         shouldBlock: true,
         reason: 'Classifier returned no tool use block - blocking for safety',

@@ -1911,9 +1911,8 @@ function runHeadlessStreaming(
 
       // Set up hot-reload for plugin hooks now that the initial install is done.
       // In sync-install mode, setup.ts skips this to avoid racing with the install.
-      const { setupPluginHookHotReload } = await import(
-        '../utils/plugins/loadPluginHooks.js'
-      )
+      const { setupPluginHookHotReload } =
+        await import('../utils/plugins/loadPluginHooks.js')
       setupPluginHookHotReload()
     }
 
@@ -3867,7 +3866,9 @@ function runHeadlessStreaming(
                 question,
                 cacheSafeParams,
               })
-              sendControlResponseSuccess(message, { response: result.response })
+              sendControlResponseSuccess(message, {
+                response: result.response,
+              })
             } catch (e) {
               sendControlResponseError(message, errorMessage(e))
             }
@@ -3912,9 +3913,8 @@ function runHeadlessStreaming(
               // instead of a generic "initialization failed".
               let bridgeFailureDetail: string | undefined
               try {
-                const { initReplBridge } = await import(
-                  'src/bridge/initReplBridge.js'
-                )
+                const { initReplBridge } =
+                  await import('src/bridge/initReplBridge.js')
                 const handle = await initReplBridge({
                   onInboundMessage(msg) {
                     const fields = extractInboundMessageFields(msg)
@@ -4927,9 +4927,8 @@ async function loadInitialMessages(
               // eslint-disable-next-line @typescript-eslint/no-require-imports
               require('../tools/AgentTool/loadAgentsDir.js') as typeof import('../tools/AgentTool/loadAgentsDir.js')
             getAgentDefinitionsWithOverrides.cache.clear?.()
-            const freshAgentDefs = await getAgentDefinitionsWithOverrides(
-              getCwd(),
-            )
+            const freshAgentDefs =
+              await getAgentDefinitionsWithOverrides(getCwd())
 
             setAppState(prev => ({
               ...prev,
@@ -5129,9 +5128,8 @@ async function loadInitialMessages(
             // eslint-disable-next-line @typescript-eslint/no-require-imports
             require('../tools/AgentTool/loadAgentsDir.js') as typeof import('../tools/AgentTool/loadAgentsDir.js')
           getAgentDefinitionsWithOverrides.cache.clear?.()
-          const freshAgentDefs = await getAgentDefinitionsWithOverrides(
-            getCwd(),
-          )
+          const freshAgentDefs =
+            await getAgentDefinitionsWithOverrides(getCwd())
 
           setAppState(prev => ({
             ...prev,

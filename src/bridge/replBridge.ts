@@ -438,7 +438,6 @@ export async function initBridgeCore(
   // re-created after a connection loss.
   let currentSessionId: string
 
-
   if (reusedPriorSession && prior) {
     currentSessionId = prior.sessionId
     logForDebugging(
@@ -825,7 +824,6 @@ export async function initBridgeCore(
     // Clear flushed UUIDs so initial messages are re-sent to the new session.
     // UUIDs are scoped per-session on the server, so re-flushing is safe.
     previouslyFlushedUUIDs?.clear()
-
 
     // Reset the counter so independent reconnections hours apart don't
     // exhaust the limit — it guards against rapid consecutive failures,
@@ -1773,7 +1771,10 @@ export async function initBridgeCore(
       for (const msg of filtered) {
         if (msg.uuid) recentPostedUUIDs.add(msg.uuid)
       }
-      const events = filtered.map(m => ({ ...m, session_id: currentSessionId }))
+      const events = filtered.map(m => ({
+        ...m,
+        session_id: currentSessionId,
+      }))
       void transport.writeBatch(events)
     },
     sendControlRequest(request: SDKControlRequest) {

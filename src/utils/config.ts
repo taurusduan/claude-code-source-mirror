@@ -12,7 +12,7 @@ import type {
   BillingType,
   ReferralEligibilityResponse,
 } from '../services/oauth/types.js'
-import { getCwd } from '../utils/cwd.js'
+import { getCwd } from './cwd.js'
 import { registerCleanup } from './cleanupRegistry.js'
 import { logForDebugging } from './debug.js'
 import { logForDiagnosticsNoPII } from './diagLogs.js'
@@ -149,10 +149,7 @@ const DEFAULT_PROJECT_CONFIG: ProjectConfig = {
 
 export type InstallMethod = 'local' | 'native' | 'global' | 'unknown'
 
-export {
-  EDITOR_MODES,
-  NOTIFICATION_CHANNELS,
-} from './configConstants.js'
+export { EDITOR_MODES, NOTIFICATION_CHANNELS } from './configConstants.js'
 
 import type { EDITOR_MODES, NOTIFICATION_CHANNELS } from './configConstants.js'
 
@@ -555,7 +552,6 @@ export type GlobalConfig = {
 
   // Speculation configuration (ant-only)
   speculationEnabled?: boolean // Whether speculation is enabled (default: true)
-
 
   // Client data for server-side experiments (fetched during bootstrap).
   clientDataCache?: Record<string, unknown> | null

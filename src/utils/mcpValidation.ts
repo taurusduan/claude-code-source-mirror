@@ -107,7 +107,10 @@ async function truncateContentBlocks(
         result.push(block)
         currentChars += block.text.length
       } else {
-        result.push({ type: 'text', text: block.text.slice(0, remainingChars) })
+        result.push({
+          type: 'text',
+          text: block.text.slice(0, remainingChars),
+        })
         break
       }
     } else if (isImageBlock(block)) {

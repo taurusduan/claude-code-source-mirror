@@ -914,10 +914,7 @@ async function withRetry<T>(
 
 // Moved to codeSessionApi.ts so the SDK /bridge subpath can bundle them
 // without pulling in this file's heavy CLI tree (analytics, transport).
-export {
-  createCodeSession,
-  type RemoteCredentials,
-} from './codeSessionApi.js'
+export { createCodeSession, type RemoteCredentials } from './codeSessionApi.js'
 import {
   createCodeSession,
   fetchRemoteCredentials as fetchRemoteCredentialsRaw,

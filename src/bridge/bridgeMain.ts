@@ -2037,9 +2037,8 @@ export async function bridgeMain(args: string[]): Promise<void> {
 
   // The bridge fast-path bypasses init.ts, so we must enable config reading
   // before any code that transitively calls getGlobalConfig()
-  const { enableConfigs, checkHasTrustDialogAccepted } = await import(
-    '../utils/config.js'
-  )
+  const { enableConfigs, checkHasTrustDialogAccepted } =
+    await import('../utils/config.js')
   enableConfigs()
 
   // Initialize analytics and error reporting sinks. The bridge bypasses the
@@ -2095,9 +2094,8 @@ export async function bridgeMain(args: string[]): Promise<void> {
   // Resolve auth
   const { clearOAuthTokenCache, checkAndRefreshOAuthTokenIfNeeded } =
     await import('../utils/auth.js')
-  const { getBridgeAccessToken, getBridgeBaseUrl } = await import(
-    './bridgeConfig.js'
-  )
+  const { getBridgeAccessToken, getBridgeBaseUrl } =
+    await import('./bridgeConfig.js')
 
   const bridgeToken = getBridgeAccessToken()
   if (!bridgeToken) {
@@ -2147,9 +2145,8 @@ export async function bridgeMain(args: string[]): Promise<void> {
   // KAIROS-gated at parseArgs — continueSession is always false in external
   // builds, so this block tree-shakes.
   if (feature('KAIROS') && continueSession) {
-    const { readBridgePointerAcrossWorktrees } = await import(
-      './bridgePointer.js'
-    )
+    const { readBridgePointerAcrossWorktrees } =
+      await import('./bridgePointer.js')
     const found = await readBridgePointerAcrossWorktrees(dir)
     if (!found) {
       // biome-ignore lint/suspicious/noConsole: intentional error output
@@ -2203,9 +2200,8 @@ export async function bridgeMain(args: string[]): Promise<void> {
       ? process.env.CLAUDE_BRIDGE_SESSION_INGRESS_URL
       : baseUrl
 
-  const { getBranch, getRemoteUrl, findGitRoot } = await import(
-    '../utils/git.js'
-  )
+  const { getBranch, getRemoteUrl, findGitRoot } =
+    await import('../utils/git.js')
 
   // Precheck worktree availability for the first-run dialog and the `w`
   // toggle. Unconditional so we know upfront whether worktree is an option.
@@ -2821,9 +2817,8 @@ export async function runBridgeHeadless(
   setOriginalCwd(dir)
   setCwdState(dir)
 
-  const { enableConfigs, checkHasTrustDialogAccepted } = await import(
-    '../utils/config.js'
-  )
+  const { enableConfigs, checkHasTrustDialogAccepted } =
+    await import('../utils/config.js')
   enableConfigs()
   const { initSinks } = await import('../utils/sinks.js')
   initSinks()
@@ -2856,9 +2851,8 @@ export async function runBridgeHeadless(
       ? process.env.CLAUDE_BRIDGE_SESSION_INGRESS_URL
       : baseUrl
 
-  const { getBranch, getRemoteUrl, findGitRoot } = await import(
-    '../utils/git.js'
-  )
+  const { getBranch, getRemoteUrl, findGitRoot } =
+    await import('../utils/git.js')
   const { hasWorktreeCreateHook } = await import('../utils/hooks.js')
 
   if (opts.spawnMode === 'worktree') {

@@ -60,10 +60,10 @@ import type { PermissionDecision } from '../../types/permissions.js'
 import {
   createAssistantAPIErrorMessage,
   createUserMessage,
-} from '../../utils/messages.js'
-import { evictTaskOutput } from '../../utils/task/diskOutput.js'
-import { evictTerminalTask } from '../../utils/task/framework.js'
-import { tokenCountWithEstimation } from '../../utils/tokens.js'
+} from '../messages.js'
+import { evictTaskOutput } from '../task/diskOutput.js'
+import { evictTerminalTask } from '../task/framework.js'
+import { tokenCountWithEstimation } from '../tokens.js'
 import { createAbortController } from '../abortController.js'
 import { type AgentContext, runWithAgentContext } from '../agentContext.js'
 import { count } from '../array.js'

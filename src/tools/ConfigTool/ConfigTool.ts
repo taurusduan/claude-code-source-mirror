@@ -114,9 +114,8 @@ export const ConfigTool = buildTool({
     // must also be gated at runtime. When the kill-switch is on, treat
     // voiceEnabled as an unknown setting so no voice-specific strings leak.
     if (feature('VOICE_MODE') && setting === 'voiceEnabled') {
-      const { isVoiceGrowthBookEnabled } = await import(
-        '../../voice/voiceModeEnabled.js'
-      )
+      const { isVoiceGrowthBookEnabled } =
+        await import('../../voice/voiceModeEnabled.js')
       if (!isVoiceGrowthBookEnabled()) {
         return {
           data: { success: false, error: `Unknown setting: "${setting}"` },
@@ -234,9 +233,8 @@ export const ConfigTool = buildTool({
       setting === 'voiceEnabled' &&
       finalValue === true
     ) {
-      const { isVoiceModeEnabled } = await import(
-        '../../voice/voiceModeEnabled.js'
-      )
+      const { isVoiceModeEnabled } =
+        await import('../../voice/voiceModeEnabled.js')
       if (!isVoiceModeEnabled()) {
         const { isAnthropicAuthEnabled } = await import('../../utils/auth.js')
         return {
@@ -248,9 +246,8 @@ export const ConfigTool = buildTool({
           },
         }
       }
-      const { isVoiceStreamAvailable } = await import(
-        '../../services/voiceStreamSTT.js'
-      )
+      const { isVoiceStreamAvailable } =
+        await import('../../services/voiceStreamSTT.js')
       const {
         checkRecordingAvailability,
         checkVoiceDependencies,
@@ -346,9 +343,8 @@ export const ConfigTool = buildTool({
       // AppState.settings (useVoiceEnabled reads settings.voiceEnabled)
       // and the settings cache resets for the next /voice read.
       if (feature('VOICE_MODE') && setting === 'voiceEnabled') {
-        const { settingsChangeDetector } = await import(
-          '../../utils/settings/changeDetector.js'
-        )
+        const { settingsChangeDetector } =
+          await import('../../utils/settings/changeDetector.js')
         settingsChangeDetector.notifyChange('userSettings')
       }
 

@@ -17,7 +17,7 @@ import type { ToolUseConfirm } from '../components/permissions/PermissionRequest
 import type { SpinnerMode } from '../components/Spinner/types.js'
 import { useNotifications } from '../context/notifications.js'
 import { useIsOverlayActive } from '../context/overlayContext.js'
-import { useCommandQueue } from '../hooks/useCommandQueue.js'
+import { useCommandQueue } from './useCommandQueue.js'
 import { getShortcutDisplay } from '../keybindings/shortcutFormat.js'
 import { useKeybinding } from '../keybindings/useKeybinding.js'
 import type { Screen } from '../screens/REPL.js'

@@ -1477,7 +1477,6 @@ function getPluginHookCounts(
   return counts
 }
 
-
 /**
  * Build a map of {hookType: count} from matched hooks.
  */

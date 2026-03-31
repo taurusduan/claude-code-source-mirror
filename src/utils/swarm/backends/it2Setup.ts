@@ -1,11 +1,11 @@
 import { homedir } from 'os'
-import { getGlobalConfig, saveGlobalConfig } from '../../../utils/config.js'
-import { logForDebugging } from '../../../utils/debug.js'
+import { getGlobalConfig, saveGlobalConfig } from '../../config.js'
+import { logForDebugging } from '../../debug.js'
 import {
   execFileNoThrow,
   execFileNoThrowWithCwd,
-} from '../../../utils/execFileNoThrow.js'
-import { logError } from '../../../utils/log.js'
+} from '../../execFileNoThrow.js'
+import { logError } from '../../log.js'
 
 /**
  * Package manager types for installing it2.

@@ -907,15 +907,12 @@ export const connectToServer = memoize(
         isClaudeInChromeMCPServer(name)
       ) {
         // Run the Chrome MCP server in-process to avoid spawning a ~325 MB subprocess
-        const { createChromeContext } = await import(
-          '../../utils/claudeInChrome/mcpServer.js'
-        )
-        const { createClaudeForChromeMcpServer } = await import(
-          '@ant/claude-for-chrome-mcp'
-        )
-        const { createLinkedTransportPair } = await import(
-          './InProcessTransport.js'
-        )
+        const { createChromeContext } =
+          await import('../../utils/claudeInChrome/mcpServer.js')
+        const { createClaudeForChromeMcpServer } =
+          await import('@ant/claude-for-chrome-mcp')
+        const { createLinkedTransportPair } =
+          await import('./InProcessTransport.js')
         const context = createChromeContext(serverRef.env)
         inProcessServer = createClaudeForChromeMcpServer(context)
         const [clientTransport, serverTransport] = createLinkedTransportPair()
@@ -930,12 +927,10 @@ export const connectToServer = memoize(
         // Run the Computer Use MCP server in-process — same rationale as
         // Chrome above. The package's CallTool handler is a stub; real
         // dispatch goes through wrapper.tsx's .call() override.
-        const { createComputerUseMcpServerForCli } = await import(
-          '../../utils/computerUse/mcpServer.js'
-        )
-        const { createLinkedTransportPair } = await import(
-          './InProcessTransport.js'
-        )
+        const { createComputerUseMcpServerForCli } =
+          await import('../../utils/computerUse/mcpServer.js')
+        const { createLinkedTransportPair } =
+          await import('./InProcessTransport.js')
         inProcessServer = await createComputerUseMcpServerForCli()
         const [clientTransport, serverTransport] = createLinkedTransportPair()
         await inProcessServer.connect(serverTransport)

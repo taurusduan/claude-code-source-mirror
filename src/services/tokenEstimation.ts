@@ -474,9 +474,8 @@ async function countTokensWithBedrock({
       }),
     }
 
-    const { CountTokensCommand } = await import(
-      '@aws-sdk/client-bedrock-runtime'
-    )
+    const { CountTokensCommand } =
+      await import('@aws-sdk/client-bedrock-runtime')
     const input: CountTokensCommandInput = {
       modelId,
       input: {

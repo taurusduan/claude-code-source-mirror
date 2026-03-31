@@ -1015,7 +1015,9 @@ function getPluginVersionFromManifest(
   const manifestPath = join(pluginCachePath, '.claude-plugin', 'plugin.json')
 
   try {
-    const manifestContent = fs.readFileSync(manifestPath, { encoding: 'utf-8' })
+    const manifestContent = fs.readFileSync(manifestPath, {
+      encoding: 'utf-8',
+    })
     const manifest = jsonParse(manifestContent)
     return manifest.version || 'unknown'
   } catch {

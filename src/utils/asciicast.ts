@@ -165,7 +165,9 @@ export function installAsciicastRecorder(): void {
     // Directory may already exist
   }
   // eslint-disable-next-line custom-rules/no-sync-fs -- one-time init before Ink mounts
-  getFsImplementation().appendFileSync(filePath, header + '\n', { mode: 0o600 })
+  getFsImplementation().appendFileSync(filePath, header + '\n', {
+    mode: 0o600,
+  })
 
   let pendingWrite: Promise<void> = Promise.resolve()
 

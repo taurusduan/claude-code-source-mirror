@@ -3,7 +3,7 @@
 // By using execa, Windows automatically gets shell escaping + BAT / CMD handling
 
 import { type ExecaError, execa } from 'execa'
-import { getCwd } from '../utils/cwd.js'
+import { getCwd } from './cwd.js'
 import { logError } from './log.js'
 
 export { execSyncWithDefaults_DEPRECATED } from './execFileNoThrowPortable.js'
@@ -132,7 +132,11 @@ export function execFileNoThrowWithCwd(
               ),
             })
           } else {
-            void resolve({ stdout: '', stderr: '', code: result.exitCode ?? 1 })
+            void resolve({
+              stdout: '',
+              stderr: '',
+              code: result.exitCode ?? 1,
+            })
           }
         } else {
           void resolve({
