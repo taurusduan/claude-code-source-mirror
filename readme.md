@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Claude Code 运行截图](docs/images/main.jpg)
+![Claude Code 运行截图](/images/main.jpg)
 
 **🔍 深入理解 AI 编程工具的完整客户端实现**
 
